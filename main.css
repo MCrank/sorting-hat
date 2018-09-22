@@ -3,8 +3,10 @@ Cinzel - https://fonts.google.com/specimen/Cinzel
 Berkshire Swash - https://fonts.google.com/specimen/Berkshire+Swash
 Conzel Decorative - https://fonts.google.com/specimen/Cinzel+Decorative
 Fontdiner Swanky - https://fonts.google.com/specimen/Fontdiner+Swanky
-
  */
+* {
+  font-family: 'Berkshire Swash', cursive;
+}
 
 body {
   background-color: lightsteelblue;
@@ -12,4 +14,12 @@ body {
 .jumbotron {
   background-image: url('./img/jumbo_background_dark.jpg');
   background-size: cover;
+}
+
+.jumbotron h1 {
+  font-family: 'Fontdiner Swanky', cursive;
+}
+
+.student-input h3 {
+  font-family: 'Fontdiner Swanky', cursive;
 }
