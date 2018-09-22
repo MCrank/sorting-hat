@@ -31,3 +31,17 @@ const printToDom = (stringToPrint, elementId) => {
   const selectedDiv = document.getElementById(elementId);
   selectedDiv.innerHTML = stringToPrint;
 };
+
+// Event listener and function to show\hide the Student Form when someone clicks the Start Sorting button
+const startSortingBtn = document.querySelector('.start-sort-btn');
+
+startSortingBtn.addEventListener('click', (event) => {
+  const studentForm = document.querySelector('.student-input');
+  if (studentForm.classList.contains('invisible')) {
+    studentForm.classList.replace('invisible', 'visible');
+    startSortingBtn.innerHTML = 'Stop Sorting!';
+  } else if (studentForm.classList.contains('visible')) {
+    studentForm.classList.replace('visible', 'invisible');
+    startSortingBtn.innerHTML = 'Start Sorting!';
+  }
+});
