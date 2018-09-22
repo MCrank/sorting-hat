@@ -23,8 +23,9 @@ body {
   font-family: 'Fontdiner Swanky', cursive;
 }
 
-.student-input h3 {
+.student-input h2 {
   font-family: 'Fontdiner Swanky', cursive;
+  /* font-size: 20px; */
 }
 
 .card-deck {
@@ -32,5 +33,5 @@ body {
 }
 
 .card-header {
-  font-size: 20px;
+  font-size: 18px;
 }
