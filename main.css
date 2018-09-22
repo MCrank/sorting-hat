@@ -2,6 +2,6 @@ body {
   background-color: lightsteelblue;
 }
 .jumbotron {
-  background-image: url('./img/jumbo_background.jpg');
+  background-image: url('./img/jumbo_background_dark.jpg');
   background-size: cover;
 }
