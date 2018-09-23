@@ -50,11 +50,12 @@ const studentCardBuilder = (randomHouse, studentName) => {
     <div class="card-body text-center" style="background-color: ${selectedHouse.color1}">
       <h5 class="card-title pb-4">${selectedHouse.name}</h5>
       <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
-      <a href="#" class="btn btn-info w-75">Expelliarmus</a>
+      <a href="#" class="expel-btn btn btn-info w-75">Expelliarmus</a>
     </div>
   </div>`;
 
   printToDom(newString, 'student-cards');
+  enableExpel();
 };
 
 // Get reference to the Start Sorting Button
@@ -79,7 +80,26 @@ startSortignBtn.addEventListener('click', (event) => {
   event.preventDefault();
   let randomHouse = randomNum(SortingObj.length);
   const studentName = document.querySelector('#student-input');
-  studentCardBuilder(randomHouse, studentName.value);
-  studentName.value = '';
-  studentName.focus();
+  if (studentName.value === '') {
+    alert("You must enter a student name or else I can't sort!");
+  } else {
+    studentCardBuilder(randomHouse, studentName.value);
+    studentName.value = '';
+    studentName.focus();
+  }
 });
+
+// Function to add event listener for student cards as they are added since they do not
+// exist on the DOM at page load
+const enableExpel = () => {
+  const expelBtn = document.getElementsByClassName('expel-btn');
+
+  for (let i = 0; i < expelBtn.length; i++) {
+    const element = expelBtn[i];
+    element.addEventListener('click', (event) => {
+      const buttonClicked = event.target;
+      const cardToDelete = buttonClicked.parentNode.parentNode;
+      cardToDelete.remove();
+    });
+  }
+};
