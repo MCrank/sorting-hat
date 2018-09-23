@@ -38,22 +38,26 @@ const randomNum = (max) => {
 };
 
 // Student card builder function
-const studentCardBuilder = (randomHouse, studentName) => {
+const studentCardBuilder = () => {
+  let randomHouse = randomNum(SortingObj.length);
+  const studentName = document.querySelector('#student-input');
+  if (studentName.value === '') {
+    $('#my-modal').modal();
+  }
   const selectedHouse = SortingObj[randomHouse];
-  let newString = `
-  <div class="card mx-auto mb-3">
-    <div class="card-header text-center" style="background-color:
-    ${selectedHouse.color2}
-    ">
-      ${studentName}
-      </div>
+  let newString = `<div class="card mx-auto mb-3">
+    <div class="card-header text-center" style="background-color:${selectedHouse.color2}">
+    ${studentName.value}
+    </div>
     <div class="card-body text-center" style="background-color: ${selectedHouse.color1}">
       <h5 class="card-title pb-4">${selectedHouse.name}</h5>
       <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
-      <a href="#" class="expel-btn btn btn-info w-75">Expelliarmus</a>
+      <a href="#" class="expel-btn btn btn-info">Expelliarmus</a>
     </div>
   </div>`;
 
+  studentName.value = '';
+  studentName.focus();
   printToDom(newString, 'student-cards');
   enableExpel();
 };
@@ -78,14 +82,14 @@ const startSortignBtn = document.querySelector('.sort-btn');
 // Click event to add student card, clear input, and re focus
 startSortignBtn.addEventListener('click', (event) => {
   event.preventDefault();
-  let randomHouse = randomNum(SortingObj.length);
-  const studentName = document.querySelector('#student-input');
-  if (studentName.value === '') {
-    alert("You must enter a student name or else I can't sort!");
-  } else {
-    studentCardBuilder(randomHouse, studentName.value);
-    studentName.value = '';
-    studentName.focus();
+  studentCardBuilder();
+});
+
+// Capture enter key on Student Input Form to build card
+const startSortingInput = document.querySelector('#student-input');
+startSortingInput.addEventListener('keyup', (event) => {
+  if (event.key === 'Enter') {
+    studentCardBuilder();
   }
 });
 
