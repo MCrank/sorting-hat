@@ -45,17 +45,14 @@ const studentCardBuilder = () => {
     $('#my-modal').modal();
   }
   const selectedHouse = SortingObj[randomHouse];
-  let newString = `
-  <div class="card mx-auto mb-3">
-    <div class="card-header text-center" style="background-color:
-    ${selectedHouse.color2}
-    ">
-      ${studentName.value}
-      </div>
+  let newString = `<div class="card mx-auto mb-3">
+    <div class="card-header text-center" style="background-color:${selectedHouse.color2}">
+    ${studentName.value}
+    </div>
     <div class="card-body text-center" style="background-color: ${selectedHouse.color1}">
       <h5 class="card-title pb-4">${selectedHouse.name}</h5>
       <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
-      <a href="#" class="expel-btn btn btn-info w-75">Expelliarmus</a>
+      <a href="#" class="expel-btn btn btn-info">Expelliarmus</a>
     </div>
   </div>`;
 
