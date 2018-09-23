@@ -29,19 +29,57 @@ const SortingObj = [
 // Function for printing to the DOM
 const printToDom = (stringToPrint, elementId) => {
   const selectedDiv = document.getElementById(elementId);
-  selectedDiv.innerHTML = stringToPrint;
+  selectedDiv.innerHTML += stringToPrint;
 };
 
-// Event listener and function to show\hide the Student Form when someone clicks the Start Sorting button
-const startSortingBtn = document.querySelector('.start-sort-btn');
+// Random number Generator
+const randomNum = (max) => {
+  return Math.floor(Math.random() * Math.floor(max));
+};
 
-startSortingBtn.addEventListener('click', (event) => {
+// Student card builder function
+const studentCardBuilder = (randomHouse, studentName) => {
+  const selectedHouse = SortingObj[randomHouse];
+  let newString = `
+  <div class="card mx-auto mb-3">
+    <div class="card-header text-center" style="background-color:
+    ${selectedHouse.color2}
+    ">
+      ${studentName}
+      </div>
+    <div class="card-body text-center" style="background-color: ${selectedHouse.color1}">
+      <h5 class="card-title pb-4">${selectedHouse.name}</h5>
+      <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
+      <a href="#" class="btn btn-info w-75">Expelliarmus</a>
+    </div>
+  </div>`;
+
+  printToDom(newString, 'student-cards');
+};
+
+// Get reference to the Start Sorting Button
+const showStudentInputBtn = document.querySelector('.start-sort-btn');
+// Click Event and function to show\hide the Student Form when someone clicks the Start Sorting button
+showStudentInputBtn.addEventListener('click', (event) => {
   const studentForm = document.querySelector('.student-input');
   if (studentForm.classList.contains('invisible')) {
     studentForm.classList.replace('invisible', 'visible');
-    startSortingBtn.innerHTML = 'Stop Sorting!';
+    showStudentInputBtn.innerHTML = 'Stop Sorting!';
   } else if (studentForm.classList.contains('visible')) {
     studentForm.classList.replace('visible', 'invisible');
-    startSortingBtn.innerHTML = 'Start Sorting!';
+    showStudentInputBtn.innerHTML = 'Start Sorting!';
   }
+  document.querySelector('#student-input').focus();
+});
+
+// Get Reference to the Sort button on the Student input
+const startSortignBtn = document.querySelector('.sort-btn');
+// Click event to add student card, clear input, and re focus
+startSortignBtn.addEventListener('click', (event) => {
+  event.preventDefault();
+  let randomHouse = randomNum(SortingObj.length);
+  const studentName = document.querySelector('#student-input');
+  studentCardBuilder(randomHouse, studentName.value);
+  studentName.value = '';
+  studentName.focus();
 });
