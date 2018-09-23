@@ -5,7 +5,13 @@ Cinzel Decorative - https://fonts.google.com/specimen/Cinzel+Decorative
 Fontdiner Swanky - https://fonts.google.com/specimen/Fontdiner+Swanky
  */
 * {
-  font-family: 'Berkshire Swash', cursive;
+  /* font-family: 'Berkshire Swash', cursive; */
+  /* font-family: 'Cinzel', serif; */
+  font-family: 'Berkshire Swsh', cursive;
+}
+
+.jumbotron h1 {
+  font-family: 'Fontdiner Swanky', cursive;
 }
 
 body {
@@ -18,11 +24,13 @@ body {
   background-size: cover;
 }
 
-.jumbotron h1,
-.card-header {
+.jumbotron h1 {
   font-family: 'Fontdiner Swanky', cursive;
 }
-
+#student-input,
+.start-sort {
+  font-family: 'Berkshire Swsh', cursive;
+}
 .student-input h2 {
   font-family: 'Fontdiner Swanky', cursive;
   /* font-size: 20px; */

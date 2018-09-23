@@ -81,7 +81,8 @@ startSortignBtn.addEventListener('click', (event) => {
   let randomHouse = randomNum(SortingObj.length);
   const studentName = document.querySelector('#student-input');
   if (studentName.value === '') {
-    alert("You must enter a student name or else I can't sort!");
+    $('#my-modal').modal();
+    // alert("You must enter a student name or else I can't sort!");
   } else {
     studentCardBuilder(randomHouse, studentName.value);
     studentName.value = '';
