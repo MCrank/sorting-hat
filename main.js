@@ -4,25 +4,25 @@ const SortingObj = [
     name: 'Gryffindor',
     color1: '#ae0001',
     color2: '#eeba30',
-    crest: './img/Gryffindor.png'
+    crest: './img/Gryffindor_Banner_200.jpg'
   },
   {
     name: 'Hufflepuff',
     color1: '#ecb939',
     color2: '#000000',
-    crest: './img/Hufflepuff.png'
+    crest: './img/HufflePuff_Banner_200.jpg'
   },
   {
     name: 'Ravenclaw',
     color1: '#222f5b',
     color2: '#946b2d',
-    crest: './img/Ravenclaw.png'
+    crest: './img/RavenClaw_Banner_200.jpg'
   },
   {
     name: 'Slytherin',
     color1: '#2a623d',
     color2: '#aaaaaa',
-    crest: './img/Slytherin.png'
+    crest: './img/Slytherin_Banner_200.jpg'
   }
 ];
 
@@ -45,14 +45,14 @@ const studentCardBuilder = () => {
     $('#my-modal').modal();
   }
   const selectedHouse = SortingObj[randomHouse];
-  let newString = `<div class="card mx-auto mb-3">
-    <div class="card-header text-center" style="background-color:${selectedHouse.color2}">
-    ${studentName.value}
-    </div>
-    <div class="card-body text-center" style="background-color: ${selectedHouse.color1}">
-      <h5 class="card-title pb-4">${selectedHouse.name}</h5>
-      <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
-      <a href="#" class="expel-btn btn btn-info">Expelliarmus</a>
+  let newString = `<div class="card bg-dark text-white mx-auto mb-3 text-center">
+  <img class="card-img img-fluid img-thumbnail" src="${selectedHouse.crest}" alt="Card image" style="opacity: 0.4">
+  <div class="card-img-overlay p-1 d-flex flex-column">
+      <div class="card-header text-center p-1">${studentName.value}</div>
+      <div class="card-body text-center mx-auto pb-1 d-flex flex-column justify-content-around">
+        <p class="card-text">${selectedHouse.name}</p>
+        <a href="#" class="expel-btn btn btn-info">Expelliarmus</a>
+      </div>
     </div>
   </div>`;
 
@@ -102,7 +102,7 @@ const enableExpel = () => {
     const element = expelBtn[i];
     element.addEventListener('click', (event) => {
       const buttonClicked = event.target;
-      const cardToDelete = buttonClicked.parentNode.parentNode;
+      const cardToDelete = buttonClicked.parentNode.parentNode.parentNode;
       cardToDelete.remove();
     });
   }
