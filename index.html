@@ -56,21 +56,21 @@
             ”</p>
         <hr class="my-4">
         <p>Gryffindor, Ravenclaw, Hufflepuff, or Slytherin. Which will you be? Click the button and you will see.</p>
-        <a class="start-sort-btn btn btn-lg btn-info float-right" id="start-sort-btn" href="#" role="button">Start
+        <a href="#student-input-form" class="start-sort-btn btn btn-info float-right" id="start-sort-btn" role="button">Start
             Sorting!</a>
     </div>
 
     <!-- Student Form Start -->
-    <form class="student-input w-50 mx-auto mb-5 invisible">
-        <div class="form-group mb-2 border border-dark shadow rounded">
-            <h2 class="text-center my-3">Enter First Year's Name</h2>
+    <form class="student-input w-50 mx-auto mb-5 invisible" id="student-input-form">
+        <div class="form-group mb-2 border border-white shadow rounded">
+            <h2 class="text-center my-3 text-white">Enter First Year's Name</h2>
             <div class="form-row justify-content-center mb-2">
                 <div class="col-sm-6">
                     <div class="input-group mb-3">
                         <input type="input" class="form-control" id="student-input" placeholder="Student Name Here"
                             autofocus>
                         <div class="input-group-append">
-                            <button class="sort-btn btn btn-info px-4" type="button" id="sort-button">Sort!</button>
+                            <a href="#student-header" class="sort-btn btn btn-info px-4">Sort!</a>
                         </div>
                     </div>
                 </div>
@@ -78,8 +78,21 @@
         </div>
     </form>
 
+    <!-- Student Card Header -->
+    <div>
+        <h1 id="student-header" class="text-center m-4 text-white" hidden><strong>Hogwart's Students</strong></h>
+    </div>
+
     <!-- Student Cards Start -->
     <div id="student-cards" class="d-flex flex-wrap w-50 mx-auto"></div>
+
+    <!-- Voldamort Army Header -->
+    <div>
+        <h1 id="vold-army-header" class="text-center m-4 text-white" hidden><strong>Voldamort's Army</strong></h>
+    </div>
+
+    <!-- Voldamort's Army Start -->
+    <div id="vold-army" class="d-flex flex-wrap w-50 mx-auto"></div>
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

@@ -43,21 +43,23 @@ const studentCardBuilder = () => {
   const studentName = document.querySelector('#student-input');
   if (studentName.value === '') {
     $('#my-modal').modal();
+    return;
   }
   const selectedHouse = SortingObj[randomHouse];
-  let newString = `<div class="card bg-dark text-white mx-auto mb-3 text-center">
+  let newString = `<div class="student-card card bg-dark text-white mx-auto mb-3 text-center shadow">
   <img class="card-img img-fluid img-thumbnail" src="${selectedHouse.crest}" alt="Card image" style="opacity: 0.4">
   <div class="card-img-overlay p-1 d-flex flex-column">
       <div class="card-header text-center p-1">${studentName.value}</div>
       <div class="card-body text-center mx-auto pb-1 d-flex flex-column justify-content-around">
         <p class="card-text">${selectedHouse.name}</p>
-        <a href="#" class="expel-btn btn btn-info">Expelliarmus</a>
+        <a href="#vold-army-header" class="expel-btn btn btn-info">Expelliarmus</a>
       </div>
     </div>
   </div>`;
 
   studentName.value = '';
   studentName.focus();
+  showHeader('student-header', 'student-card');
   printToDom(newString, 'student-cards');
   enableExpel();
 };
@@ -66,6 +68,7 @@ const studentCardBuilder = () => {
 const showStudentInputBtn = document.querySelector('.start-sort-btn');
 // Click Event and function to show\hide the Student Form when someone clicks the Start Sorting button
 showStudentInputBtn.addEventListener('click', (event) => {
+  event.preventDefault();
   const studentForm = document.querySelector('.student-input');
   if (studentForm.classList.contains('invisible')) {
     studentForm.classList.replace('invisible', 'visible');
@@ -102,8 +105,34 @@ const enableExpel = () => {
     const element = expelBtn[i];
     element.addEventListener('click', (event) => {
       const buttonClicked = event.target;
-      const cardToDelete = buttonClicked.parentNode.parentNode.parentNode;
-      cardToDelete.remove();
+      const cardToMove = buttonClicked.parentElement.parentElement.parentElement;
+      // const cardToDelete = buttonClicked.parentNode.parentNode.parentNode;
+      cardToMove.remove();
+      enterTheArmy(cardToMove);
     });
   }
+};
+
+// Print the Army Header only if there are cards there
+const showHeader = (headerDiv, cardClass) => {
+  const cardHeader = document.getElementById(headerDiv);
+  const cardCount = document.getElementsByClassName(cardClass);
+  if (cardCount.length === 0) {
+    cardHeader.removeAttribute('hidden');
+  }
+};
+
+// Move expelled students to voldamort's army
+// 1. Grab the entire element and pass it to a function
+// 2. Manipulate the content if needed and then pass to print to dom and post in
+//    voldamort's army DIV
+// 3. ??? Profit
+const enterTheArmy = (newRecruit) => {
+  // Adding vold-card because using that in printArmyHeader to see if I should display the header
+  newRecruit.classList.remove('student-card');
+  newRecruit.classList.add('vold-card');
+  newRecruit.querySelector('.card-img').setAttribute('src', './img/Dementor_200.png');
+  newRecruit.querySelector('.expel-btn').innerHTML = 'Avada Kedavra!';
+  showHeader('vold-army-header', 'vold-card');
+  printToDom(newRecruit.outerHTML, 'vold-army');
 };
