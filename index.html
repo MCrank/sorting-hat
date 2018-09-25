@@ -56,7 +56,7 @@
             ”</p>
         <hr class="my-4">
         <p>Gryffindor, Ravenclaw, Hufflepuff, or Slytherin. Which will you be? Click the button and you will see.</p>
-        <a href="#student-input-form" class="start-sort-btn btn btn-info float-right" id="start-sort-btn" role="button">Start
+        <a href="#" class="start-sort-btn btn btn-info float-right" id="start-sort-btn" role="button">Start
             Sorting!</a>
     </div>
 
@@ -70,7 +70,8 @@
                         <input type="input" class="form-control" id="student-input" placeholder="Student Name Here"
                             autofocus>
                         <div class="input-group-append">
-                            <a href="#student-header" class="sort-btn btn btn-info px-4">Sort!</a>
+                            <button class="sort-btn btn btn-info px-4" type="button" id="sort-button">Sort!</button>
+                            <!-- <a href="#" class="sort-btn btn btn-info px-4">Sort!</a> -->
                         </div>
                     </div>
                 </div>
@@ -80,15 +81,15 @@
 
     <!-- Student Card Header -->
     <div>
-        <h1 id="student-header" class="text-center m-4 text-white" hidden><strong>Hogwart's Students</strong></h>
+        <h1 id="student-header" class="text-center m-4 text-white" hidden><strong>Hogwart's Students</strong></h1>
     </div>
 
     <!-- Student Cards Start -->
-    <div id="student-cards" class="d-flex flex-wrap w-50 mx-auto"></div>
+    <div id="student-cards" class="student-cards d-flex flex-wrap w-50 mx-auto"></div>
 
     <!-- Voldamort Army Header -->
     <div>
-        <h1 id="vold-army-header" class="text-center m-4 text-white" hidden><strong>Voldamort's Army</strong></h>
+        <h1 id="vold-army-header" class="text-center m-4 text-white" hidden><strong>Voldamort's Army</strong></h1>
     </div>
 
     <!-- Voldamort's Army Start -->

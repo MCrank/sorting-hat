@@ -14,7 +14,7 @@ Fontdiner Swanky - https://fonts.google.com/specimen/Fontdiner+Swanky
 
 body {
   background-image: url('./img/Old_Brick.jpg');
-  background-size: contain;
+  background-size: cover;
 }
 
 .jumbotron {

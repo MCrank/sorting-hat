@@ -52,7 +52,7 @@ const studentCardBuilder = () => {
       <div class="card-header text-center p-1">${studentName.value}</div>
       <div class="card-body text-center mx-auto pb-1 d-flex flex-column justify-content-around">
         <p class="card-text">${selectedHouse.name}</p>
-        <a href="#vold-army-header" class="expel-btn btn btn-info">Expelliarmus</a>
+        <a href="#" class="expel-btn btn btn-info">Expelliarmus</a>
       </div>
     </div>
   </div>`;
